@@ -1,17 +1,25 @@
 import * as i2c from 'i2c-bus'
 
+const BASE_NAME = 'Fivdi'
+
 export class FivdiBusProvider {
   static async openPromisified(busNumber) {
-    return new FivdiBus(await i2c.openPromisified(busNumber))
+    return new FivdiBus(await i2c.openPromisified(busNumber), `${BASE_NAME}-${busNumber}`)
   }
 }
 
 export class FivdiBus {
   #bus
+  #name
 
-  constructor(i2cBus) {
+  constructor(i2cBus, name = BASE_NAME) {
+    this.#name = name
     this.#bus = i2cBus
   }
+
+  get name() { return this.#name }
+
+  close() { this.#bus.closeSync() }
 
   sendByte(address, byteValue) {
     return this.#bus.sendByte(address, byteValue)
@@ -52,4 +60,6 @@ export class FivdiBus {
       buffer: buffer.buffer
     }
   }
+
+  async scan() { return this.#bus.scan() }
 }

@@ -1,0 +1,12 @@
+{
+  "name": "@johntalton/i2c-bus-fivdi",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [ "./src/**/*.js"],
+  "dependencies": {
+    "i2c-bus": "^5.2.3"
+  }
+}

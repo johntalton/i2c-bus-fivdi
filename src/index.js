@@ -1,4 +1,4 @@
-const * as i2c from 'i2c-bus'
+import * as i2c from 'i2c-bus'
 
 export class FivdiBusProvider {
   static async openPromisified(busNumber) {
@@ -7,18 +7,19 @@ export class FivdiBusProvider {
 }
 
 export class FivdiBus {
+  #bus
+
   constructor(i2cBus) {
-    this.bus = i2cBus
+    this.#bus = i2cBus
   }
 
   sendByte(address, byteValue) {
-    return this.bus.sendByte(address, byteValue)
+    return this.#bus.sendByte(address, byteValue)
   }
 
   async readI2cBlock(address, cmd, length, bufferSource) {
     const intoBuffer = Buffer.from(bufferSource)
-    // console.log('FivdiBus::readI2cBlock', { address, cmd, length, bufferSource, buffer })
-    const { bytesRead, buffer } = await this.bus.readI2cBlock(address, cmd, length, intoBuffer)
+    const { bytesRead, buffer } = await this.#bus.readI2cBlock(address, cmd, length, intoBuffer)
     return {
       bytesRead,
       buffer: buffer.buffer
@@ -27,8 +28,7 @@ export class FivdiBus {
 
   async writeI2cBlock(address, cmd, length, bufferSource) {
     const bufferToWrite = Buffer.from(bufferSource)
-    // console.log('FivdiBus::writeI2cBlock', { address, cmd, length, bufferSource, buffer })
-    const { bytesWritten, buffer } = await this.bus.writeI2cBlock(address, cmd, length, bufferToWrite)
+    const { bytesWritten, buffer } = await this.#bus.writeI2cBlock(address, cmd, length, bufferToWrite)
     return {
       bytesWritten,
       buffer: buffer.buffer
@@ -37,7 +37,7 @@ export class FivdiBus {
 
   async i2cRead(address, length, bufferSource) {
     const intoBuffer = Buffer.from(bufferSource)
-    const { bytesRead, buffer } = await this.bus.i2cRead(address,length, intoBuffer)
+    const { bytesRead, buffer } = await this.#bus.i2cRead(address,length, intoBuffer)
     return {
       bytesRead,
       buffer: buffer.buffer
@@ -46,7 +46,7 @@ export class FivdiBus {
 
   async i2cWrite(address, length, bufferSource) {
     const bufferToWrite = Buffer.from(bufferSource)
-    const { bytesWritten, buffer } = await this.bus.i2cWrite(address, length, bufferToWrite)
+    const { bytesWritten, buffer } = await this.#bus.i2cWrite(address, length, bufferToWrite)
     return {
       bytesWritten,
       buffer: buffer.buffer

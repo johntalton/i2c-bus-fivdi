@@ -57,7 +57,7 @@ export class FivdiBus {
 		const { bytesRead, buffer } = await this.#bus.readI2cBlock(address, cmd, length, intoBuffer)
 		return {
 			bytesRead,
-			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength)
+			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, bytesRead)
 		}
 	}
 
@@ -75,7 +75,7 @@ export class FivdiBus {
 		const { bytesWritten, buffer } = await this.#bus.writeI2cBlock(address, cmd, length, bufferToWrite)
 		return {
 			bytesWritten,
-			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength)
+			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, bytesWritten)
 		}
 	}
 
@@ -92,7 +92,7 @@ export class FivdiBus {
 		const { bytesRead, buffer } = await this.#bus.i2cRead(address, length, intoBuffer)
 		return {
 			bytesRead,
-			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength)
+			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, bytesRead)
 		}
 	}
 
@@ -109,7 +109,7 @@ export class FivdiBus {
 		const { bytesWritten, buffer } = await this.#bus.i2cWrite(address, length, bufferToWrite)
 		return {
 			bytesWritten,
-			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength)
+			buffer: new Uint8Array(buffer.buffer, buffer.byteOffset, bytesWritten)
 		}
 	}
 

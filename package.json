@@ -10,6 +10,6 @@
     "i2c-bus": "^5.2.3"
   },
   "devDependencies": {
-    "@johntalton/and-other-delights": "../and-other-delights"
+    "@johntalton/and-other-delights": "^8.6.0"
   }
 }

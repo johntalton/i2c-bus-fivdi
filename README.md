@@ -1,9 +1,10 @@
 # i2c-bus-fivdi
 
-![CI](https://github.com/johntalton/i2c-bus-fivdi/workflows/CI/badge.svg)
-![GitHub](https://img.shields.io/github/license/johntalton/i2c-bus-fivdi)
-
 Providing a wrapper around node module `i2c-bus` (by [Fivdi](https://github.com/fivdi/i2c-bus/)) to expose an `I2CBus` (from [AOD](https://github.com/johntalton/and-other-delights)) compatible interface.
+
+
+[![CI](https://github.com/johntalton/i2c-bus-fivdi/actions/workflows/CI.yml/badge.svg)](https://github.com/johntalton/i2c-bus-fivdi/actions/workflows/CI.yml)
+![GitHub](https://img.shields.io/github/license/johntalton/i2c-bus-fivdi)
 
 ## Background
 

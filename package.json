@@ -1,6 +1,7 @@
 {
   "name": "@johntalton/i2c-bus-fivdi",
-  "version": "1.2.0",
+  "version": "1.2.1",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": "./src/index.js"
@@ -11,5 +12,8 @@
   },
   "devDependencies": {
     "@johntalton/and-other-delights": "^8.6.4"
+  },
+  "repository": {
+    "url": "https://github.com/johntalton/i2c-bus-fivdi"
   }
 }
